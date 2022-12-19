@@ -14,5 +14,6 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: src(https://images5.alphacoders.com/109/1091574.png);
 }
