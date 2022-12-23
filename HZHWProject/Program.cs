@@ -1,6 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using HZHWProject.Models;
+using HZHWProject.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<UPD8DbContext>(options =>
+    options.UseSqlServer(connectionString));
+//builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
