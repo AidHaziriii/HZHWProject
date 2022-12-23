@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication20.Controllers
 {
-    public class UsersController : Controller
+    public class StudentController : Controller
     {
         private readonly UPD8DbContext _context;
 
-        public UsersController(UPD8DbContext context)
+        public StudentController(UPD8DbContext context)
         {
             _context = context;
         }
