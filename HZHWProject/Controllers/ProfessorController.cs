@@ -3,13 +3,13 @@ using HZHWProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication20.Controllers
+namespace HZHWProject.Controllers
 {
-    public class UsersController : Controller
+    public class ProfessorController : Controller
     {
-        private readonly UPD8DbContextProfessor _context;
+        private readonly UPD8DbContext _context;
 
-        public UsersController(UPD8DbContextProfessor context)
+        public ProfessorController(UPD8DbContext context)
         {
             _context = context;
         }
