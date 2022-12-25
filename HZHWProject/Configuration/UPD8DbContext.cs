@@ -13,5 +13,7 @@ namespace HZHWProject.Configuration
         public DbSet<Professor> Professor { get; set; }
 
         public DbSet<Admin> Admin { get; set; }
+
+        public DbSet<Class> Class { get; set; }
     }
 }
