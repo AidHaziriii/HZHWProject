@@ -1,0 +1,3 @@
+-Nuk kemi perdorur task managment, komunikimi i taskave eshte bere vetem me ane te Discord.
+
+-Github Repo: https://github.com/AidHaziriii/HZHWProject
