@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HZHWProject.Controllers
 {
-    public class StudentController : Controller
+    public class UserController : Controller
     {
         private readonly UPD8DbContext _context;
 
-        public StudentController(UPD8DbContext context)
+        public UserController(UPD8DbContext context)
         {
             _context = context;
         }
@@ -17,7 +17,7 @@ namespace HZHWProject.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Student.ToListAsync());
+            return View(await _context.Account.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -28,14 +28,14 @@ namespace HZHWProject.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
+            var account = await _context.Account
                 .FirstOrDefaultAsync(m => m.ID == ID);
-            if (student == null)
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(account);
         }
 
         // GET: Users/Create
@@ -49,15 +49,15 @@ namespace HZHWProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,username,password,email")] Student student)
+        public async Task<IActionResult> Create([Bind("ID,username,password,email,role")] Account account)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(student);
+                _context.Add(account);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(account);
         }
 
         // GET: Users/Edit/5
@@ -68,12 +68,12 @@ namespace HZHWProject.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student.FindAsync(ID);
-            if (student == null)
+            var account = await _context.Account.FindAsync(ID);
+            if (account == null)
             {
                 return NotFound();
             }
-            return View(student);
+            return View(account);
         }
 
         // POST: Users/Edit/5
@@ -81,9 +81,9 @@ namespace HZHWProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int ID, [Bind("ID,username,password,email")] Student student)
+        public async Task<IActionResult> Edit(int ID, [Bind("ID,username,password,email,role")] Account account )
         {
-            if (ID != student.ID)
+            if (ID != account.ID)
             {
                 return NotFound();
             }
@@ -92,12 +92,12 @@ namespace HZHWProject.Controllers
             {
                 try
                 {
-                    _context.Update(student);
+                    _context.Update(account);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(student.ID))
+                    if (!UserExists(account.ID))
                     {
                         return NotFound();
                     }
@@ -108,7 +108,7 @@ namespace HZHWProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(account);
         }
 
         // GET: Users/Delete/5
@@ -119,14 +119,14 @@ namespace HZHWProject.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
+            var account = await _context.Account
                 .FirstOrDefaultAsync(m => m.ID == ID);
-            if (student == null)
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(account);
         }
 
         // POST: Users/Delete/5
@@ -134,15 +134,15 @@ namespace HZHWProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int ID)
         {
-            var student = await _context.Student.FindAsync(ID);
-            _context.Student.Remove(student);
+            var account = await _context.Account.FindAsync(ID);
+            _context.Account.Remove(account);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserExists(int ID)
         {
-            return _context.Student.Any(e => e.ID == ID);
+            return _context.Account.Any(e => e.ID == ID);
         }
     }
 }

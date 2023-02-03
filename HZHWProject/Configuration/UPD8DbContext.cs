@@ -8,7 +8,7 @@ namespace HZHWProject.Configuration
         public UPD8DbContext(DbContextOptions options) : base(options)
         { }
 
-        public DbSet<Student> Student { get; set; }
+        public DbSet<Account> Account { get; set; }
 
         public DbSet<Professor> Professor { get; set; }
 

@@ -6,7 +6,7 @@
     Layout = "~/Views/Account/Layout1.cshtml";
 }
 <style>
-   import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+<!--   import : url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap'); -->
 *{
   margin: 0;
   padding: 0;
@@ -27,9 +27,9 @@ html,body{
 }
 .wrapper{
   overflow: hidden;
-  max-width: 390px;
+  max-width: 5000px;
   background: #fff;
-  padding: 30px;
+  padding: 15px;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
@@ -172,7 +172,7 @@ form .btn .btn-layer{
   background: -webkit-linear-gradient(right,#003366,#004080,#0059b3
 , #0073e6);
   border-radius: 15px;
-  transition: all 0.4s ease;;
+  transition: all 0.4s ease;
 }
 form .btn:hover .btn-layer{
   left: 0;
@@ -199,6 +199,7 @@ form .btn input[type="submit"]{
     const loginBtn = document.querySelector("label.login");
     const signupBtn = document.querySelector("label.signup");
     const signupLink = document.querySelector("form .signup-link a");
+    const signupForm = document.querySelector("form.signup");
     signupBtn.onclick = (() => {
         loginForm.style.marginLeft = "-50%";
         loginText.style.marginLeft = "-50%";
@@ -216,17 +217,9 @@ form .btn input[type="submit"]{
 <body>
     <div class="wrapper">
         <div class="title-text">
-            <div class="title login">Login Form</div>
-            <div class="title signup">Signup Form</div>
+            <div class="title login">Login</div>
         </div>
         <div class="form-container">
-            <div class="slide-controls">
-                <input type="radio" name="slide" id="login" checked>
-                <input type="radio" name="slide" id="signup">
-                <label for="login" class="slide login">Login</label>
-                <label for="signup" class="slide signup">Signup</label>
-                <div class="slider-tab"></div>
-            </div>
             <div class="form-inner">
                 <form asp-action="Verify" class="login" method="post">
                     <div class="field">
@@ -240,22 +233,7 @@ form .btn input[type="submit"]{
                         <div class="btn-layer"></div>
                         <input type="submit" value="Login" name="Login">
                     </div>
-                    <div class="signup-link">Not a member? <a href="">Signup now</a></div>
-                </form>
-                <form action="#" class="signup">
-                    <div class="field">
-                        <input type="text" placeholder="Username" required>
-                    </div>
-                    <div class="field">
-                        <input type="password" placeholder="Password" required>
-                    </div>
-                    <div class="field">
-                        <input type="password" placeholder="Confirm password" required>
-                    </div>
-                    <div class="field btn">
-                        <div class="btn-layer"></div>
-                        <input type="submit" value="Signup">
-                    </div>
+                    <div class="signup-link">Not a member? <a asp-controller="Account" asp-action="Register">Signup</a></div>
                 </form>
             </div>
         </div>

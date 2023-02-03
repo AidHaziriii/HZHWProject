@@ -1,4 +1,6 @@
 ﻿using HZHWProject.Configuration;
+using HZHWProject.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace HZHWProject
@@ -16,6 +18,9 @@ namespace HZHWProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddAuthentication();
+            services.AddMvc();
 
             services.AddDbContext<UPD8DbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
@@ -38,6 +43,8 @@ namespace HZHWProject
             app.UseStaticFiles();
 
             app.UseRouting();
+
+
 
             app.UseAuthorization();
 
